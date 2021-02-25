@@ -5,3 +5,89 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* CSS box-sizing fix from: https://css-tricks.com/box-sizing/ */
 html { box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(216, 216, 216);
+    background: #223;
+}
+
+.navbar {
+    padding: 20px 40px;
+    /* background: linear-gradient(rgb(41, 41, 97), rgb(16, 6, 75)); */
+    background: black;
+}
+
+h1 {
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 50px;
+    text-transform: uppercase;
+    text-shadow: black 17px 17px, rgba(255, 255, 255, 0.2) 20px 20px;
+    margin-bottom: 32px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.sub-h {
+    color: grey;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.navbar-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar-list::before, .navbar-list::after {
+    content: "";
+    border-bottom: 2px solid white;
+    flex-grow: 1;
+}
+
+.navbar-list li {
+    display: flex;
+}
+
+.navbar-list li::before {
+    min-width: 20px;
+    flex-grow: 1;
+    content: "";
+    border-bottom: 2px solid white;
+}
+
+.navbar-list li:first-child::before {
+    content: none;
+}
+
+.navbar-list a {
+    padding: 14px;
+    font-size: 18px;
+    border: 2px solid white;
+    color: white;
+}
+
+.navbar-list-active a {
+    border-bottom: none !important;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-justify {
+    text-align: justify;
+}
+
+#tab-content {
+    max-width: 960px;
+    padding: 40px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
