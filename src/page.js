@@ -1,7 +1,7 @@
 import * as tabMain from './tab-main';
 import * as tabMenu from './tab-menu';
 
-let currentTab = null;
+let currentTabObject = null;
 
 function initTabs(tabContent) {
     for (let tabModule of [tabMain, tabMenu]) {
@@ -11,7 +11,7 @@ function initTabs(tabContent) {
         console.log(tabObject);
 
         tabObject.tabLink.onclick = () => {
-            setCurrentTab(tabObject.tab);
+            setCurrentTab(tabObject);
         };
 
         tabObject.tab.classList.add('tab-hidden');
@@ -66,15 +66,18 @@ function init() {
     let content = document.querySelector('#content');
     let tabContent = generatePage(content);
     initTabs(tabContent);
+    setCurrentTab(tabMain.getTabObject());
 }
 
-function setCurrentTab(tab) {
-    if (currentTab) {
-        currentTab.classList.add('tab-hidden');
+function setCurrentTab(tabObject) {
+    if (currentTabObject) {
+        currentTabObject.tab.classList.add('tab-hidden');
+        currentTabObject.tabListItem.classList.remove('navbar-list-active');
     }
 
-    currentTab = tab;
-    currentTab.classList.remove('tab-hidden');
+    currentTabObject = tabObject;
+    currentTabObject.tab.classList.remove('tab-hidden');
+    currentTabObject.tabListItem.classList.add('navbar-list-active');
 }
 
 export { init };
