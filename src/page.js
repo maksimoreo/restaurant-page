@@ -1,10 +1,11 @@
 import * as tabMain from './tab-main';
 import * as tabMenu from './tab-menu';
+import * as tabContact from './tab-contact';
 
 let currentTabObject = null;
 
 function initTabs(tabContent) {
-    for (let tabModule of [tabMain, tabMenu]) {
+    for (let tabModule of [tabMain, tabMenu, tabContact]) {
         console.log(tabModule);
         tabModule.init();
         let tabObject = tabModule.getTabObject();
@@ -22,7 +23,6 @@ function initTabs(tabContent) {
 }
 
 function generatePage() {
-
     let nav = document.createElement('nav');
     nav.classList.add('navbar');
     content.appendChild(nav);
@@ -56,7 +56,7 @@ function generatePage() {
     ul.querySelector('li').classList.add('navbar-list-active');
 
     let tabContent = document.createElement('div');
-    tabContent.id = '#tab-content';
+    tabContent.id = 'tab-content';
     content.appendChild(tabContent);
 
     return tabContent;
