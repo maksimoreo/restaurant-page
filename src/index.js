@@ -1,3 +1,3 @@
-import { generatePage } from './page';
+import { init } from './page';
 
-generatePage();
+init();

@@ -1,5 +1,27 @@
+import * as tabMain from './tab-main';
+import * as tabMenu from './tab-menu';
+
+let currentTab = null;
+
+function initTabs(tabContent) {
+    for (let tabModule of [tabMain, tabMenu]) {
+        console.log(tabModule);
+        tabModule.init();
+        let tabObject = tabModule.getTabObject();
+        console.log(tabObject);
+
+        tabObject.tabLink.onclick = () => {
+            setCurrentTab(tabObject.tab);
+        };
+
+        tabObject.tab.classList.add('tab-hidden');
+        tabContent.appendChild(tabObject.tab);
+
+        console.log(tabObject);
+    }
+}
+
 function generatePage() {
-    let content = document.querySelector('#content');
 
     let nav = document.createElement('nav');
     nav.classList.add('navbar');
@@ -36,10 +58,23 @@ function generatePage() {
     let tabContent = document.createElement('div');
     tabContent.id = '#tab-content';
     content.appendChild(tabContent);
+
+    return tabContent;
 }
 
-function clearTabContent() {
-    tabContent.innerHTML = '';
+function init() {
+    let content = document.querySelector('#content');
+    let tabContent = generatePage(content);
+    initTabs(tabContent);
 }
 
-export { generatePage, clearTabContent };
+function setCurrentTab(tab) {
+    if (currentTab) {
+        currentTab.classList.add('tab-hidden');
+    }
+
+    currentTab = tab;
+    currentTab.classList.remove('tab-hidden');
+}
+
+export { init };
